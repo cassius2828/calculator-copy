@@ -1,0 +1,80 @@
+@import url("https://fonts.googleapis.com/css?family=Orbitron");
+
+* {
+  font-family: Orbitron;
+}
+/* App styles */
+
+.App {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10rem;
+}
+
+/* display nums */
+
+.grandNum {
+  color: orange;
+}
+
+/* main container */
+.main-container {
+  width: 25rem;
+  height: 33rem;
+  background-color: rgb(23, 23, 23);
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  justify-content: center;
+}
+
+.grid {
+  width: calc(100% - 1rem);
+  height: calc(100% - 5rem);
+  display: flex;
+  flex-wrap: wrap;
+}
+
+button {
+  background-color: rgb(117, 115, 112);
+  color: white;
+  border: solid 0.3px black;
+}
+
+button:hover {
+  transform: scale(1.1);
+  color: orange;
+  border: solid 1px white;
+  z-index: 99;
+  transition: all 0.1s ease-out;
+}
+
+.longer-btn {
+  width: 50%;
+  height: 20%;
+}
+
+.taller-btn {
+  height: 40%;
+  width: 25%;
+}
+
+.normal-btn {
+  width: 25%;
+  height: 20%;
+}
+
+.equal {
+  position: relative;
+  top: -20%;
+  background-color: rgb(34, 91, 151);
+}
+
+.dark-btn {
+  background-color: rgb(56, 55, 54);
+}
+
+.ac {
+  background-color: rgb(165, 55, 55);
+}
