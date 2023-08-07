@@ -14,7 +14,7 @@
 
 /* display nums */
 
-.grandNum {
+.topNum {
   color: orange;
 }
 
@@ -77,4 +77,19 @@ button:hover {
 
 .ac {
   background-color: rgb(165, 55, 55);
+}
+
+
+/* testing */
+
+.resetCalc {
+  width: 200px;
+  height: 200px;
+  background-color: rgb(51, 82, 221);
+}
+
+.operator {
+  width: 200px;
+  height: 200px;
+  background-color: rgb(221, 204, 51);
 }
