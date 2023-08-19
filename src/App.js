@@ -89,15 +89,6 @@ function App() {
         topDisplay.charAt(topDisplay.length - 2) === "/" ||
         topDisplay.charAt(topDisplay.length - 2) === "-")
     ) {
-      //  {
-      // (topDisplay.charAt(topDisplay.length - 2) === "*" ||
-      //   topDisplay.charAt(topDisplay.length - 2) === "+" ||
-      //   topDisplay.charAt(topDisplay.length - 2) === "/") &&
-      // (topDisplay.charAt(topDisplay.length - 3) === "*" ||
-      //   topDisplay.charAt(topDisplay.length - 3) === "+" ||
-      //   topDisplay.charAt(topDisplay.length - 3) === "/" ||
-      //   topDisplay.charAt(topDisplay.length - 2) === "-")
-      // )
       setTopDisplay(memory[0] + symbol);
     }
   };
