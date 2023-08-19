@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import "./App.css";
 import tachyons from "tachyons";
+import { evaluate } from "mathjs";
 
 function App() {
   // state
@@ -15,7 +16,7 @@ function App() {
 
   // array of operators
   const operators = ["*", "/", "+", "-"];
-
+  let topDisplayCopy;
   // const operatorCheck = () => {
   //   let test = topDisplay.split("");
   //   operators.map((item) => {
@@ -39,14 +40,39 @@ function App() {
     setResetCalc(0);
     setDisableDec(false);
     setDisableOp(false);
-    console.log(topDisplay)
+    // console.log(topDisplay);
   };
+
+  // ///////////////////////////
+  //! TEST FUNCTION HERE
+
+  const test = () => {
+    if (
+      (topDisplay.charAt(topDisplay.length - 1) === "*" ||
+        topDisplay.charAt(topDisplay.length - 1) === "+" ||
+        topDisplay.charAt(topDisplay.length - 1) === "/") &&
+      (topDisplay.charAt(topDisplay.length - 2) === "*" ||
+        topDisplay.charAt(topDisplay.length - 2) === "+" ||
+        topDisplay.charAt(topDisplay.length - 2) === "/" ||
+        topDisplay.charAt(topDisplay.length - 2) === "-")
+    ) {
+      console.log(topDisplay);
+      // setTopDisplay(memory[0] + symbol);
+      console.log(topDisplay);
+    }
+  };
+
+  // useEffect(() => {
+  //   test();
+  // }, []);
+  // ///////////////////////////
 
   const handleOp = (symbol) => {
     if (
       topDisplay.charAt(topDisplay.length - 1) === "*" ||
       topDisplay.charAt(topDisplay.length - 1) === "+" ||
       topDisplay.charAt(topDisplay.length - 1) === "/"
+      // (topDisplay.charAt(topDisplay.length - 1) === "-")
       // ||
       //  disableOp === true
     ) {
@@ -55,7 +81,42 @@ function App() {
       setTopDisplay((prev) => prev + symbol);
       setDisableDec(false);
     }
+
+    if (
+      (symbol === "*" || symbol === "+" || symbol === "/") &&
+      (topDisplay.charAt(topDisplay.length - 2) === "*" ||
+        topDisplay.charAt(topDisplay.length - 2) === "+" ||
+        topDisplay.charAt(topDisplay.length - 2) === "/" ||
+        topDisplay.charAt(topDisplay.length - 2) === "-")
+    ) {
+      //  {
+      // (topDisplay.charAt(topDisplay.length - 2) === "*" ||
+      //   topDisplay.charAt(topDisplay.length - 2) === "+" ||
+      //   topDisplay.charAt(topDisplay.length - 2) === "/") &&
+      // (topDisplay.charAt(topDisplay.length - 3) === "*" ||
+      //   topDisplay.charAt(topDisplay.length - 3) === "+" ||
+      //   topDisplay.charAt(topDisplay.length - 3) === "/" ||
+      //   topDisplay.charAt(topDisplay.length - 2) === "-")
+      // )
+      setTopDisplay(memory[0] + symbol);
+    }
   };
+
+  // useEffect(() => {
+  //  if (
+  //    (topDisplay.charAt(topDisplay.length - 2) === "*" ||
+  //      topDisplay.charAt(topDisplay.length - 2) === "+" ||
+  //      topDisplay.charAt(topDisplay.length - 2) === "/") &&
+  //    (topDisplay.charAt(topDisplay.length - 3) === "*" ||
+  //      topDisplay.charAt(topDisplay.length - 3) === "+" ||
+  //      topDisplay.charAt(topDisplay.length - 3) === "/" ||
+  //      topDisplay.charAt(topDisplay.length - 2) === "-")
+  //  ) {
+  //    test();
+  //  } else {
+
+  //  }
+  // }, topDisplay)
 
   // decimal handler
   const handleDec = (symbol) => {
@@ -96,6 +157,7 @@ function App() {
 
     // this resets the calculator if you press a number
     // before an operator
+    //* lol no it doesn't, but it does allow to chain evals
 
     if (
       equalCount > 0 &&
@@ -140,11 +202,15 @@ function App() {
   //   setTopDisplay((prev) => prev + symbol);
   // };
 
+  useEffect(() => {
+    console.log(memory);
+  }, [memory]);
+
   // answer logic
   const answer = () => {
     setEqualCount((prev) => prev + 1);
-    setTopDisplay(eval(topDisplay).toString());
-    setBottomDisplay(eval(topDisplay).toString());
+    setTopDisplay(evaluate(topDisplay).toString());
+    setBottomDisplay(evaluate(topDisplay).toString());
     setResetCalc(0);
   };
 
@@ -304,6 +370,7 @@ function App() {
       {/* {operatorState > 0 ? (
         <div className="ma2 operator tc pa5">operator state active</div>
       ) : null} */}
+      <div onClick={() => test()} id="test"></div>
     </>
   );
 }
