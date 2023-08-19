@@ -84,10 +84,10 @@ function App() {
 
     if (
       (symbol === "*" || symbol === "+" || symbol === "/") &&
-      (topDisplay.charAt(topDisplay.length - 2) === "*" ||
-        topDisplay.charAt(topDisplay.length - 2) === "+" ||
-        topDisplay.charAt(topDisplay.length - 2) === "/" ||
-        topDisplay.charAt(topDisplay.length - 2) === "-")
+      (topDisplay.charAt(topDisplay.length - 1) === "*" ||
+        topDisplay.charAt(topDisplay.length - 1) === "+" ||
+        topDisplay.charAt(topDisplay.length - 1) === "/" ||
+        topDisplay.charAt(topDisplay.length - 1) === "-")
     ) {
       setTopDisplay(memory[0] + symbol);
     }
